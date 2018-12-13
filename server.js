@@ -34,8 +34,12 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public'));
 
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+
 // routes ==================================================
 require('./app/routes')(app); // configure our routes
+const test = require('./app/models/test');
+app.use('/test', test);
 
 // start app ===============================================
 // startup our app at http://localhost:8080

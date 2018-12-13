@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+
+    <title>CU Run</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="libs/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="libs/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <!-- Custom styles for this template -->
+    <link href="libs/css/agency.css" rel="stylesheet">
+    <link href="libs/css/styles.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top" style="padding-top:1px;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/index">Clarkson Running</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../loops/index.html">Routes</a>
+            </li> -->
+            <li class="nav-item active">
+              <a class="nav-link js-scroll-trigger" href="/segments">Segments</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/races">Races</a>
+            </li> -->
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../team/index.html">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/test">Other</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="loopsheader">
+      <div class="container align-left">
+          <div class="media-container-column mbr-white col-md-12">
+              <h2 class="py-3 display-2">Strava Segments</h2>
+              <h5 class="display-5">Explore Strava segments, view leaderboards, and your personal bests</h5>
+              <div class="py-4"><a class="btn btn-md btn-black display-4" href="https://www.Strava.com">Visit Strava.com</a>
+              </div>
+          </div>
+      </div>
+      <div class="container align-left" style="width:30%; text-align:center;">
+        <form action="/segments" style="display:grid;">
+          <div class="row" style="display:inline-flex;">
+            <label class="section-heading text-uppercase" style="padding-top: 6px;white-space:nowrap; width:100px; margin-right:20px;">TOKEN:</label>
+            <input class="form-control" style="margin:auto;" type="text" name="token">
+            <br>
+          </div>
+          <div class="row" style="display:inline-flex;">
+            <label class="section-heading text-uppercase" style="padding-top: 6px;white-space:nowrap; width:100px; margin-right:20px;">Segment ID:</label>
+            <input class="form-control" style="margin:auto;" type="text" name="id">
+            <br>
+          </div>
+          <button class="btn btn-primary text-uppercase" style="margin-top:30px;" type="submit" value="Submit">Submit</button>
+        </form>
+      </div>
+
+      <div style="width:70%; margin:auto;">
+      <p style="margin-top:40px;">
+        Known segment IDs: 13253894, 18897703, 14028570, 16039000, 13253914, 8003192, 7950036, 8003204, 13256700, 14517619
+      </p>
+      <p >
+        Last knows token: a6ad1955a732cd7f2c2cf56f016d0dcb31af5a2b
+      </p>
+      </div>
+      <div class="container align-left" style="text-align:center; margin-top:50px;">
+        Server Message: {{message}}
+      </div>
+
+      <div class="container align-left" style="text-align:center; margin-top:50px;">
+        <button class="accordion">Attempt Information</button>
+        <div class="panel">
+          <table class="table">
+            <tr>
+              <th width="200px;" scope="col" colspan=1>API Variable</th>
+              <th width="200px;"scope="col" colspan=1>Value</th>
+            </tr>
+            <tr>
+              <td>Segment Name: </td>
+              <td>{{name}}</td>
+            </tr>
+            <tr>
+              <td>Segment Type:</td>
+              <td>{{type}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <button class="accordion">Athlete/Activity Infomation</button>
+        <div class="panel">
+          <table class="table">
+            <tr>
+              <th width="200px;" scope="col" colspan=1>API Variable</th>
+              <th width="200px;"scope="col" colspan=1>Value</th>
+            </tr>
+            <tr>
+              <td>Total Distance (m): </td>
+              <td>{{distance}}</td>
+            </tr>
+            <tr>
+              <td>Average Grade:</td>
+              <td>{{grade}}</td>
+            </tr>
+            <tr>
+              <td>Max Grade:</td>
+              <td>{{maxgrade}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <button class="accordion">Segment Information</button>
+        <div class="panel">
+          <table class="table">
+            <tr>
+              <th width="200px;" scope="col" colspan=1>API Variable</th>
+              <th width="200px;"scope="col" colspan=1>Value</th>
+            </tr>
+            <tr>
+              <td>Start Time: </td>
+              <td>{{starttime}}</td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td>{{city}}</td>
+            </tr>
+            <tr>
+              <td>Total Time (s):</td>
+              <td>{{time}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- <section class="loopsmap">
+        <div class="googlemap"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+    </section> -->
+
+
+        <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; ClarksonRunning.com 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="libs/vendor/jquery/jquery.min.js"></script>
+    <script src="libs/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="libs/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="libs/js/jqBootstrapValidation.js"></script>
+    <script src="libs/js/contact_me.js"></script>
+
+    <script src="libs/js/agency.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <script>
+    $(document).ready( function () {
+      $('#results').DataTable();
+    } );
+    </script>
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+    </script>
+
+  </body>
+
+</html>
